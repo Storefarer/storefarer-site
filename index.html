@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Storefarer — Logistics for Ecommerce Brands Selling Physical Products in the US</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#080f1c;color:#b8c8e0;font-family:'IBM Plex Sans',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+:root{
+  --navy:#080f1c;--n1:#0d1828;--n2:#111f30;--n3:#162540;
+  --green:#1a9e5c;--green-h:#1db368;--green-l:#2ecc82;--green-d:#147a47;--green-b:rgba(30,180,100,.18);
+  --white:#f0f6ff;--off:#c8d8ec;--muted:#6a8caa;--rule:rgba(100,140,180,.13);
+  --amber:#e67e22;--red:#e05555;
+}
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:62px;border-bottom:1px solid var(--rule);background:rgba(8,15,28,.96);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--white);letter-spacing:.04em;cursor:pointer;text-decoration:none}
+.nav-logo span{color:var(--green-l)}
+.nav-cta{display:inline-flex;align-items:center;gap:7px;background:var(--green);color:var(--white);padding:8px 20px;border-radius:3px;font-size:.71rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;flex-shrink:0}
+.nav-cta:hover{background:var(--green-h);transform:translateY(-1px)}
+.tab-bar{display:flex;border-bottom:1px solid var(--rule);background:var(--n1);overflow-x:auto;scrollbar-width:none;position:sticky;top:62px;z-index:99}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-btn{background:none;border:none;border-bottom:2px solid transparent;padding:15px 26px 13px;font-family:'IBM Plex Sans',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s;margin-bottom:-1px;white-space:nowrap}
+.tab-btn:hover{color:var(--off)}
+.tab-btn.active{color:var(--green-l);border-bottom-color:var(--green-l)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+.hero{max-width:860px;margin:0 auto;padding:90px 40px 72px}
+.eyebrow{font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--green-l);margin-bottom:22px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:28px}
+h1 em{color:var(--green-l);font-style:italic}
+.hero-sub{font-size:.96rem;color:var(--muted);line-height:1.82;max-width:680px;margin-bottom:36px}
+.hero-sub strong{color:var(--off)}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px}
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:var(--white);padding:13px 28px;border-radius:3px;font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;border:none;cursor:pointer}
+.btn-p:hover{background:var(--green-h);transform:translateY(-1px)}
+.btn-s{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--rule);color:var(--off);padding:13px 24px;border-radius:3px;font-size:.76rem;font-weight:400;letter-spacing:.07em;text-decoration:none;transition:border-color .2s,color .2s;cursor:pointer}
+.btn-s:hover{border-color:var(--muted);color:var(--white)}
+.hero-nums{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.hn{padding:22px 24px;border-right:1px solid var(--rule)}
+.hn:last-child{border-right:none}
+.hn-val{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--white);margin-bottom:4px}
+.hn-lbl{font-size:.68rem;color:var(--muted);line-height:1.5}
+@media(max-width:700px){.hero-nums{grid-template-columns:1fr 1fr}.hn{border-right:none;border-bottom:1px solid var(--rule)}}
+.page-hero{max-width:860px;margin:0 auto;padding:72px 40px 56px}
+.ph1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:900;color:var(--white);line-height:1.12;margin-bottom:22px}
+.ph1 em{color:var(--green-l);font-style:italic}
+.ph-sub{font-size:.9rem;color:var(--muted);line-height:1.82;max-width:660px;margin-bottom:32px}
+.ph-sub strong{color:var(--off)}
+.full-rule{border:none;border-top:1px solid var(--rule);margin:0}
+.sec-wrap{max-width:1060px;margin:0 auto;padding:72px 40px}
+.sec-label{font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--green-l);margin-bottom:14px}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:18px}
+.sec-title em{color:var(--green-l);font-style:italic}
+.sec-sub{font-size:.88rem;color:var(--muted);line-height:1.82;max-width:680px;margin-bottom:44px}
+.sec-sub strong{color:var(--off)}
+.bg-alt{background:var(--n1)}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:2px;font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+.pill-green{background:var(--green-b);color:var(--green-l);border:1px solid var(--green-b)}
+.pill-amber{background:rgba(230,126,34,.12);color:var(--amber);border:1px solid rgba(230,126,34,.2)}
+.pill-muted{background:var(--n2);color:var(--muted);border:1px solid var(--rule)}
+.card-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+@media(max-width:700px){.card-grid{grid-template-columns:1fr}}
+.card{background:var(--n1);border:1px solid var(--rule);border-radius:4px;padding:36px 32px;text-align:left;cursor:pointer;transition:border-color .2s,transform .2s;display:flex;flex-direction:column;gap:10px}
+.card:hover{border-color:rgba(46,204,130,.3);transform:translateY(-2px)}
+.card.featured{background:var(--n2);border-color:var(--green-b)}
+.card-num{font-size:.58rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.card h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--white);line-height:1.15}
+.card p{font-size:.82rem;color:var(--muted);line-height:1.72;flex:1}
+.card p strong{color:var(--off)}
+.card-price{font-size:.68rem;font-weight:600;color:var(--green-l);letter-spacing:.06em}
+.card-cta{font-size:.72rem;font-weight:600;letter-spacing:.08em;color:var(--green-l);text-transform:uppercase;margin-top:4px}
+.card-arrow{display:inline-block;transition:transform .2s}
+.card:hover .card-arrow{transform:translateX(4px)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:700px){.story-grid{grid-template-columns:1fr}}
+.story-quote{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2vw,1.5rem);font-style:italic;color:var(--white);line-height:1.5;border-left:2px solid var(--green-l);padding-left:24px;margin-bottom:24px}
+.story-body{font-size:.86rem;color:var(--muted);line-height:1.82}
+.story-body strong{color:var(--off)}
+.story-body p+p{margin-top:14px}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+@media(max-width:800px){.pain-grid{grid-template-columns:1fr}}
+.pain-item{background:var(--n1);padding:28px 26px}
+.pain-icon{font-size:1.4rem;margin-bottom:12px}
+.pain-item h3{font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:8px;line-height:1.4}
+.pain-item p{font-size:.78rem;color:var(--muted);line-height:1.7}
+.pain-item p strong{color:var(--off)}
+.offer-stack{display:flex;flex-direction:column;gap:16px;margin-top:44px}
+.offer{border:1px solid var(--rule);border-radius:4px;padding:40px 44px;background:var(--n1)}
+.offer.tool-offer{background:var(--n2);border-color:var(--green-b)}
+.offer-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+.offer-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--white);line-height:1.1}
+.offer-price-block{text-align:right;flex-shrink:0}
+.offer-price{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--white)}
+.offer-price-note{font-size:.68rem;color:var(--muted);margin-top:2px}
+.offer-desc{font-size:.88rem;color:var(--muted);line-height:1.8;margin-bottom:28px;max-width:640px}
+.offer-desc strong{color:var(--off)}
+.offer-feats{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;margin-bottom:28px}
+@media(max-width:600px){.offer-feats{grid-template-columns:1fr}}
+.offer-feats li{list-style:none;display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--muted);line-height:1.5}
+.offer-feats li .ck{color:var(--green-l);flex-shrink:0}
+.offer-cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.tool-features{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:40px}
+@media(max-width:800px){.tool-features{grid-template-columns:1fr}}
+.tf{background:var(--n2);border:1px solid var(--rule);border-radius:4px;padding:24px 22px}
+.tf-num{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green-l);margin-bottom:10px}
+.tf h3{font-size:.86rem;font-weight:600;color:var(--off);margin-bottom:8px;line-height:1.4}
+.tf p{font-size:.78rem;color:var(--muted);line-height:1.7}
+.layer-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+@media(max-width:700px){.layer-grid{grid-template-columns:1fr}}
+.layer{border:1px solid var(--rule);border-radius:4px;padding:36px 32px;background:var(--n1)}
+.layer-icon{font-size:1.6rem;margin-bottom:16px}
+.layer h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:12px}
+.layer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.layer ul li{display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--muted);line-height:1.5}
+.layer ul li::before{content:'·';color:var(--green-l);flex-shrink:0;font-weight:700}
+.step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin-top:44px}
+@media(max-width:700px){.step-grid{grid-template-columns:1fr 1fr}}
+.step{padding:28px 24px;border-right:1px solid var(--rule);position:relative}
+.step:last-child{border-right:none}
+.step-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--green-b);margin-bottom:10px;line-height:1}
+.step h3{font-size:.8rem;font-weight:600;color:var(--off);margin-bottom:6px;line-height:1.4}
+.step p{font-size:.74rem;color:var(--muted);line-height:1.6}
+.gcc-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media(max-width:700px){.gcc-layout{grid-template-columns:1fr}}
+.gcc-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin-bottom:16px}
+.gcc-stat{padding:20px 16px;border-right:1px solid var(--rule);text-align:center}
+.gcc-stat:last-child{border-right:none}
+.gcc-stat-val{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:var(--white);margin-bottom:4px}
+.gcc-stat-lbl{font-size:.62rem;color:var(--muted);line-height:1.4}
+.cost-compare{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin-top:16px}
+.cc-item{padding:22px 20px;text-align:center}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+@media(max-width:700px){.compare-grid{grid-template-columns:1fr}}
+.cmp{padding:36px 32px}
+.cmp-head{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}
+.cmp ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+.cmp ul li{display:flex;gap:10px;font-size:.8rem;color:var(--muted);line-height:1.5}
+.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.product-grid{grid-template-columns:1fr}}
+.prod{border-radius:4px;padding:40px;border:1px solid var(--rule);background:var(--n1);position:relative;transition:border-color .2s}
+.prod.featured{background:var(--n2);border-color:var(--green-b)}
+.prod-badge{position:absolute;top:20px;right:20px;font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--green);color:var(--white);padding:4px 10px;border-radius:2px}
+.prod-eye{font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.prod h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--white);line-height:1.15;margin-bottom:12px}
+.prod-desc{font-size:.82rem;color:var(--muted);line-height:1.72;margin-bottom:22px}
+.prod-price{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
+.prod-price-val{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--white)}
+.prod-price-note{font-size:.78rem;color:var(--muted)}
+.prod-setup{font-size:.7rem;color:var(--muted);margin-bottom:22px}
+.prod-feats{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
+.prod-feats li{display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--off);line-height:1.4}
+.prod-feats li span.ck{color:var(--green-l);flex-shrink:0;margin-top:1px}
+.prod-link{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green-l);text-decoration:none;transition:gap .2s}
+.prod-link:hover{gap:10px}
+.prod-link-s{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;font-weight:500;letter-spacing:.06em;color:var(--muted);text-decoration:none;transition:color .2s}
+.prod-link-s:hover{color:var(--off)}
+.faq-list{display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.faq-item{border-bottom:1px solid var(--rule)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{width:100%;background:none;border:none;padding:22px 28px;display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Sans',sans-serif;font-size:.88rem;font-weight:500;color:var(--off);cursor:pointer;text-align:left;transition:color .2s}
+.faq-q:hover{color:var(--white)}
+.faq-icon{font-size:1.1rem;color:var(--muted);flex-shrink:0;transition:transform .25s}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a.open{max-height:300px}
+.faq-a-inner{padding:0 28px 22px;font-size:.84rem;color:var(--muted);line-height:1.78}
+.faq-a-inner strong{color:var(--off)}
+.cta-inner{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+.cta-right{display:flex;flex-direction:column;gap:12px;align-items:flex-start;flex-shrink:0}
+.cta-note{font-size:.72rem;color:var(--muted);line-height:1.6}
+.price-strip{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border:1px solid var(--green-b);border-radius:4px;padding:28px 36px;background:var(--n2);margin-top:32px}
+.ps-price{text-align:right;flex-shrink:0}
+.ps-val{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--white)}
+.ps-note{font-size:.72rem;color:var(--muted)}
+.ps-sub{font-size:.68rem;color:var(--muted);margin-top:3px}
+.market-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+@media(max-width:700px){.market-grid{grid-template-columns:1fr}}
+.mkt{background:var(--n2);border:1px solid var(--rule);border-radius:4px;padding:32px 28px;display:flex;flex-direction:column;gap:10px}
+.mkt-flag{font-size:1.8rem}
+.mkt h3{font-size:1rem;font-weight:600;color:var(--white)}
+.mkt p{font-size:.82rem;color:var(--muted);line-height:1.72;flex:1}
+.mkt p strong{color:var(--off)}
+.mkt-tag{font-size:.68rem;font-weight:600;color:var(--green-l);letter-spacing:.04em}
+.mkt-cta{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;color:var(--green-l);text-decoration:none;letter-spacing:.06em;margin-top:4px;transition:gap .2s}
+.mkt-cta:hover{gap:9px}
+.mkt-cta-s{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.mkt-cta-s:hover{color:var(--off)}
+footer{border-top:1px solid var(--rule);padding:40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;background:var(--n1)}
+.foot-logo{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:var(--white)}
+.foot-logo span{color:var(--green-l)}
+.foot-links{display:flex;gap:8px;flex-wrap:wrap}
+.foot-links button{background:none;border:none;font-family:'IBM Plex Sans',sans-serif;font-size:.7rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;transition:color .2s;cursor:pointer;padding:0}
+.foot-links button:hover{color:var(--off)}
+.foot-sep{color:var(--rule);font-size:.7rem}
+.foot-right{font-size:.7rem;color:var(--muted)}
+.foot-email{color:var(--green-l);text-decoration:none}
+.foot-email:hover{text-decoration:underline}
+.func-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+@media(max-width:700px){.func-grid{grid-template-columns:1fr}}
+.func-item{background:var(--n2);border:1px solid var(--rule);border-radius:4px;padding:28px 26px}
+.func-num{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.func-item h3{font-size:.88rem;font-weight:600;color:var(--off);margin-bottom:10px;line-height:1.35}
+.func-item p{font-size:.8rem;color:var(--muted);line-height:1.72}
+.func-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.ftag{font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:var(--n1);border:1px solid var(--rule);color:var(--muted)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" onclick="showTab('home',null)">Store<span>farer</span></a>
+  <a href="https://calendly.com/hi-storefarer/30min" class="nav-cta">Book a Free Call →</a>
+</nav>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('home',this)">Home</button>
+  <button class="tab-btn" onclick="showTab('ops',this)">Operations</button>
+  <button class="tab-btn" onclick="showTab('how',this)">How It Works</button>
+  <button class="tab-btn" onclick="showTab('pricing',this)">Pricing</button>
+  <button class="tab-btn" onclick="showTab('why',this)">Why Us</button>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     TAB: HOME
+════════════════════════════════════════════════════════════════ -->
+<div class="tab-panel active" id="tab-home">
+
+  <section class="hero">
+    <p class="eyebrow">Logistics for Ecommerce Brands Selling Physical Products in the US</p>
+    <h1>Logistics is eating<br>30% of your revenue.<br><em>Most of it is recoverable.</em></h1>
+    <p class="hero-sub">You sell physical products online in the US. Your products come from overseas manufacturers. Freight, customs, 3PL fees, and fulfilment costs consume 25–30% of every sale. Without logistics expertise, that number runs higher — wrong freight mode, uninspected 3PL invoices, unchallenged vendor rates. And when something goes wrong with a 3PL, they hold your stock. You can't fulfil orders. You have no leverage. <strong>Storefarer stands between your brand and every vendor who would take advantage of what you don't know.</strong></p>
+    <div class="hero-actions">
+      <a href="https://calendly.com/hi-storefarer/30min" class="btn-p">Book a Free Strategy Call →</a>
+      <button class="btn-s" onclick="showTab('ops',document.querySelectorAll('.tab-btn')[1])">Explore Our Services</button>
+    </div>
+    <div class="hero-nums">
+      <div class="hn"><div class="hn-val">25–30%</div><div class="hn-lbl">of your selling price goes to logistics — recoverable with the right expertise</div></div>
+      <div class="hn"><div class="hn-val">3–8%</div><div class="hn-lbl">of monthly 3PL spend is typically overcharged — most brands never notice</div></div>
+      <div class="hn"><div class="hn-val">20+</div><div class="hn-lbl">years of supply chain and ecommerce logistics experience in our founding team</div></div>
+      <div class="hn"><div class="hn-val">$600</div><div class="hn-lbl">per month — the expertise that makes logistics pay for itself</div></div>
+    </div>
+  </section>
+
+  <hr class="full-rule">
+
+  <div class="bg-alt">
+    <div class="sec-wrap reveal">
+      <p class="sec-label">The Pattern We Keep Seeing</p>
+      <div class="story-grid">
+        <div>
+          <div class="story-quote">"Great product. Great instincts. Everything else is on fire."</div>
+          <div class="story-body">
+            <p>Five years ago we started working with a brand built by two founders — one with a background in design, the other in marketing. They were 22 and 26. They had a great product, a Shopify store, and the instincts to sell.</p>
+            <p>What they didn't have was anyone to handle the logistics — the 3PL relationship, the freight decisions, customs compliance, supplier coordination. Every restock was a crisis. Every new product line added complexity they hadn't anticipated.</p>
+            <p><strong>They weren't failing because they'd built the wrong product. They were failing because they had no logistics expertise underneath them.</strong></p>
+            <p>We've seen this pattern in every founder-led ecommerce brand we've worked with since. The expertise gap is always in logistics — never in product, never in marketing.</p>
+          </div>
+        </div>
+        <div>
+          <div class="pain-grid" style="grid-template-columns:1fr;border-radius:4px">
+            <div class="pain-item">
+              <div class="pain-icon">🏭</div>
+              <h3>Your 3PL holds your stock. And they know it.</h3>
+              <p>In a billing dispute, a 3PL can hold your inventory. You can't fulfil orders. You can't switch providers. You can't negotiate from strength. <strong>Brands without logistics expertise have no leverage.</strong></p>
+            </div>
+            <div class="pain-item" style="border-top:1px solid var(--rule)">
+              <div class="pain-icon">🧾</div>
+              <h3>3PLs bill what they want. Most brands never check.</h3>
+              <p>Unapproved work. Rate drift. Ad hoc fees added without notice. Minimum monthly billing regardless of volume. Non-transparent pricing that only becomes clear when you're already locked in. 3–8% of 3PL spend is overbilled on average — and most founders accept every invoice.</p>
+            </div>
+            <div class="pain-item" style="border-top:1px solid var(--rule)">
+              <div class="pain-icon">⚠️</div>
+              <h3>Wrong 3PL decisions are expensive to reverse</h3>
+              <p>Moving goods from one fulfilment provider to another costs time and money. A brand we advise switched from Amazon MCF to a 3PL on a wholesale rep's suggestion — and paid heavily for the move, then got trapped by minimum billing with weak order volume and no exit.</p>
+            </div>
+            <div class="pain-item" style="border-top:1px solid var(--rule)">
+              <div class="pain-icon">🎯</div>
+              <h3>3PLs have been doing this for decades. They know your weakness.</h3>
+              <p>Every term in a 3PL contract is written by people who have seen brands come and go. Minimum billing clauses, unapproved work provisions, lien rights on inventory. A founder signing a 3PL contract without logistics expertise is negotiating blind.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="full-rule">
+
+  <hr class="full-rule">
+
+  <div class="sec-wrap reveal">
+    <p class="sec-label">The Real Cost of Getting Logistics Wrong</p>
+    <h2 class="sec-title">Logistics is a cost centre.<br><em>Expertise makes it a profit centre.</em></h2>
+    <p class="sec-sub">Without functional knowledge, every logistics decision is a guess. The losses are invisible — they don't show up as a single line item, they bleed out across every shipment, every invoice, every 3PL cycle.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px">
+
+      <!-- LEFT: Where money leaks -->
+      <div style="background:var(--n1);border:1px solid var(--rule);border-radius:4px;overflow:hidden">
+        <div style="padding:18px 24px;border-bottom:1px solid var(--rule);background:rgba(224,85,85,.07)">
+          <p style="font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red)">Without logistics expertise</p>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <div style="padding:20px 24px;border-bottom:1px solid var(--rule);display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--red);font-size:1rem;flex-shrink:0;margin-top:2px">✗</span>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">Wrong freight mode</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.6">Shipping air when sea was viable, or sea when lead time required air. The cost difference is 3–6× per shipment. Young founders often default to the familiar choice, not the optimal one.</p>
+            </div>
+          </div>
+          <div style="padding:20px 24px;border-bottom:1px solid var(--rule);display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--red);font-size:1rem;flex-shrink:0;margin-top:2px">✗</span>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">FCL vs LCL miscall</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.6">Booking LCL when volume justified a full container load — or FCL when LCL was the right call — adds hundreds to thousands per consignment with no visible cause.</p>
+            </div>
+          </div>
+          <div style="padding:20px 24px;border-bottom:1px solid var(--rule);display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--red);font-size:1rem;flex-shrink:0;margin-top:2px">✗</span>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">Uninspected 3PL invoices</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.6">3PL providers routinely overbill — ad hoc fees, rate drift, double billing on storage. Brands without audit discipline pay an average 3–8% more than contracted. It compounds every month.</p>
+            </div>
+          </div>
+          <div style="padding:20px 24px;border-bottom:1px solid var(--rule);display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--red);font-size:1rem;flex-shrink:0;margin-top:2px">✗</span>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">Wrong Incoterms</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.6">Accepting DDP when EXW was better, or the reverse — without understanding where liability and cost transfer. A single Incoterms miscall can shift thousands in unexpected costs onto the brand.</p>
+            </div>
+          </div>
+          <div style="padding:20px 24px;display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--red);font-size:1rem;flex-shrink:0;margin-top:2px">✗</span>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">Wrong 3PL for the fulfilment model</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.6">A 3PL built for wholesale pallets doesn't perform for DTC pick-and-pack. Brands locked into the wrong 3PL pay high per-unit costs and face service failures — and switching is expensive.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: What expertise recovers -->
+      <div style="background:var(--n2);border:1px solid var(--green-b);border-radius:4px;overflow:hidden">
+        <div style="padding:18px 24px;border-bottom:1px solid var(--green-b);background:rgba(30,180,100,.07)">
+          <p style="font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green-l)">With Storefarer expertise</p>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <div style="padding:20px 24px;border-bottom:1px solid var(--rule);display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--green-l);font-size:1rem;flex-shrink:0;margin-top:2px">✓</span>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">Freight mode optimised every shipment</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.6">Air vs sea vs courier decisions made on lead time, volume, and cost — not guesswork. The right call every cycle, benchmarked against current market rates.</p>
+            </div>
+          </div>
+          <div style="padding:20px 24px;border-bottom:1px solid var(--rule);display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--green-l);font-size:1rem;flex-shrink:0;margin-top:2px">✓</span>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">FCL/LCL decision made on data</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.6">Volume thresholds, consolidation opportunities, and carrier rate benchmarks all factored in. Savings of hundreds to thousands per consignment, every restock cycle.</p>
+            </div>
+          </div>
+          <div style="padding:20px 24px;border-bottom:1px solid var(--rule);display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--green-l);font-size:1rem;flex-shrink:0;margin-top:2px">✓</span>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">Every 3PL invoice audited automatically</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.6">The 3PL Control Tower reconciles every line item against contracted rates before approval. Overcharges flagged and recovered. Most brands save more than the cost of the service in the first month.</p>
+            </div>
+          </div>
+          <div style="padding:20px 24px;border-bottom:1px solid var(--rule);display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--green-l);font-size:1rem;flex-shrink:0;margin-top:2px">✓</span>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">Incoterms selected strategically</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.6">Risk and cost transfer points structured to the brand's advantage every shipment — not accepted by default from the supplier or freight forwarder.</p>
+            </div>
+          </div>
+          <div style="padding:20px 24px;display:flex;gap:14px;align-items:flex-start">
+            <span style="color:var(--green-l);font-size:1rem;flex-shrink:0;margin-top:2px">✓</span>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">3PL matched to your fulfilment model</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.6">Wholesale vs DTC vs omnichannel — we select and onboard the 3PL built for how your brand actually ships. No costly migration after the fact.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cost recovery callout -->
+    <div style="margin-top:20px;background:var(--n2);border:1px solid var(--green-b);border-radius:4px;padding:24px 32px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+      <div>
+        <p style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);line-height:1.35;margin-bottom:6px">The expertise pays for itself.</p>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.7;max-width:520px">For a brand doing $1M in revenue with 25% logistics cost — that's $250K/year flowing through freight, customs, and 3PL. A 5% reduction in that spend is $12,500 saved. Storefarer's full bundle costs $4,999/year. The maths are straightforward.</p>
+      </div>
+      <a href="https://calendly.com/hi-storefarer/30min" class="btn-p" style="white-space:nowrap;flex-shrink:0">See the Numbers for Your Brand →</a>
+    </div>
+  </div>
+
+  <hr class="full-rule">
+
+  <div class="bg-alt">
+  <div class="sec-wrap reveal">
+    <p class="sec-label">A Real Brand. A Real Trap.</p>
+    <h2 class="sec-title">How one reasonable decision<br><em>paralysed a brand's operations.</em></h2>
+    <p class="sec-sub">This is not a worst-case scenario. This is a pattern we have seen repeatedly. The details below are from a brand we advise directly.</p>
+
+    <div style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);border-radius:4px;overflow:hidden">
+
+      <!-- Timeline of decisions -->
+      <div style="border-right:1px solid var(--rule)">
+        <div style="padding:18px 28px;border-bottom:1px solid var(--rule);background:var(--n2)">
+          <p style="font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">What happened — step by step</p>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <div style="padding:22px 28px;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:flex-start">
+            <div style="width:22px;height:22px;border-radius:50%;background:var(--n2);border:1px solid var(--green-b);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.62rem;font-weight:700;color:var(--green-l);margin-top:1px">1</div>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">Brand was on Amazon MCF — and it was working.</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.65">Fulfilled from Amazon's network. Pricing transparent. No minimum billing. No stock risk. Suitable for the brand's volume and stage.</p>
+            </div>
+          </div>
+          <div style="padding:22px 28px;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:flex-start">
+            <div style="width:22px;height:22px;border-radius:50%;background:var(--n2);border:1px solid var(--amber);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.62rem;font-weight:700;color:var(--amber);margin-top:1px">2</div>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">Wholesale reps joined. They needed a 3PL.</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.65">The reps suggested a 3PL to handle wholesale orders. Sounded reasonable. Nobody stress-tested the decision against current volume or the cost of switching.</p>
+            </div>
+          </div>
+          <div style="padding:22px 28px;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:flex-start">
+            <div style="width:22px;height:22px;border-radius:50%;background:var(--n2);border:1px solid var(--amber);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.62rem;font-weight:700;color:var(--amber);margin-top:1px">3</div>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">Moving goods from Amazon MCF cost heavily.</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.65">Removal fees, outbound shipping, re-labelling, re-receiving at the 3PL. The migration alone was a significant unplanned cost the brand hadn't modelled.</p>
+            </div>
+          </div>
+          <div style="padding:22px 28px;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:flex-start">
+            <div style="width:22px;height:22px;border-radius:50%;background:rgba(224,85,85,.15);border:1px solid rgba(224,85,85,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.62rem;font-weight:700;color:var(--red);margin-top:1px">4</div>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">The wholesale pipeline was weak. Orders didn't flow.</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.65">The 3PL's minimum monthly billing ran regardless. The brand was paying for capacity it wasn't using — committed to a cost structure built on a pipeline that hadn't materialised.</p>
+            </div>
+          </div>
+          <div style="padding:22px 28px;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:flex-start">
+            <div style="width:22px;height:22px;border-radius:50%;background:rgba(224,85,85,.15);border:1px solid rgba(224,85,85,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.62rem;font-weight:700;color:var(--red);margin-top:1px">5</div>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">The 3PL started billing unapproved work.</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.65">Labour charges, special handling, re-work — billed on a time basis with no prior approval from the brand. When the brand queried the charges, the dispute began.</p>
+            </div>
+          </div>
+          <div style="padding:22px 28px;display:flex;gap:16px;align-items:flex-start">
+            <div style="width:22px;height:22px;border-radius:50%;background:rgba(224,85,85,.2);border:1px solid rgba(224,85,85,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.62rem;font-weight:700;color:var(--red);margin-top:1px">6</div>
+            <div>
+              <p style="font-size:.82rem;font-weight:600;color:var(--off);margin-bottom:4px">The 3PL held the stock. Orders couldn't ship.</p>
+              <p style="font-size:.78rem;color:var(--muted);line-height:1.65">While the billing dispute was unresolved, the 3PL held the inventory. Wholesale orders couldn't be fulfilled. The brand had no leverage, no exit, and a channel relationship at risk.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- What should have happened -->
+      <div>
+        <div style="padding:18px 28px;border-bottom:1px solid var(--rule);background:var(--n2)">
+          <p style="font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green-l)">What logistics advisory would have changed</p>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <div style="padding:22px 28px;border-bottom:1px solid var(--rule);display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--green-l);flex-shrink:0;font-size:.9rem;margin-top:2px">✓</span>
+            <p style="font-size:.8rem;color:var(--muted);line-height:1.65"><strong style="color:var(--off)">Stay on MCF until wholesale volume is proven.</strong> Amazon MCF can fulfil wholesale B2B orders too. The move to a 3PL was premature — the trigger should have been proven order volume, not a rep's suggestion.</p>
+          </div>
+          <div style="padding:22px 28px;border-bottom:1px solid var(--rule);display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--green-l);flex-shrink:0;font-size:.9rem;margin-top:2px">✓</span>
+            <p style="font-size:.8rem;color:var(--muted);line-height:1.65"><strong style="color:var(--off)">Model the full switching cost before committing.</strong> Removal fees, transit, re-receiving, re-labelling — all quantified upfront. The decision would have looked very different.</p>
+          </div>
+          <div style="padding:22px 28px;border-bottom:1px solid var(--rule);display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--green-l);flex-shrink:0;font-size:.9rem;margin-top:2px">✓</span>
+            <p style="font-size:.8rem;color:var(--muted);line-height:1.65"><strong style="color:var(--off)">Minimum billing terms negotiated or avoided entirely.</strong> A 3PL contract with volume-based billing, not fixed minimums, or a ramp period — standard asks for anyone who knows the trade.</p>
+          </div>
+          <div style="padding:22px 28px;border-bottom:1px solid var(--rule);display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--green-l);flex-shrink:0;font-size:.9rem;margin-top:2px">✓</span>
+            <p style="font-size:.8rem;color:var(--muted);line-height:1.65"><strong style="color:var(--off)">Approval workflow in place before billing begins.</strong> No 3PL work without a written approval request. Every charge traceable to an authorisation. The unapproved billing would never have happened.</p>
+          </div>
+          <div style="padding:22px 28px;border-bottom:1px solid var(--rule);display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--green-l);flex-shrink:0;font-size:.9rem;margin-top:2px">✓</span>
+            <p style="font-size:.8rem;color:var(--muted);line-height:1.65"><strong style="color:var(--off)">Inventory lien and dispute terms reviewed in the contract.</strong> A 3PL's right to hold stock in a dispute is often buried in the contract. Knowing it exists — and negotiating it out — is the difference between leverage and paralysis.</p>
+          </div>
+          <div style="padding:22px 28px;display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--green-l);flex-shrink:0;font-size:.9rem;margin-top:2px">✓</span>
+            <p style="font-size:.8rem;color:var(--muted);line-height:1.65"><strong style="color:var(--off)">Someone to stand between the brand and the 3PL.</strong> When a dispute escalates, you need someone who knows the trade as well as the 3PL does — who can negotiate, escalate, and recover without your orders stopping.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;background:rgba(224,85,85,.07);border:1px solid rgba(224,85,85,.25);border-radius:4px;padding:24px 32px">
+      <p style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);line-height:1.4;margin-bottom:8px">"3PLs have been doing this for decades. They know a brand's weakness. And they plan for it in the contract."</p>
+      <p style="font-size:.82rem;color:var(--muted);line-height:1.7">This brand did nothing wrong — they made a reasonable decision without the expertise to see where it led. That is the gap Storefarer closes. <strong style="color:var(--off)">We stand between your brand and every vendor who would take advantage of what you don't know.</strong></p>
+    </div>
+  </div>
+  </div>
+
+  <div class="sec-wrap reveal">
+    <p class="sec-label">How It Works</p>
+    <h2 class="sec-title">Start free. See the value.<br><em>Then let us run your logistics.</em></h2>
+    <p class="sec-sub">The free 3PL audit is your entry point — it shows exactly where your money is leaking. Then choose the Fractional Ops service lines your brand needs.</p>
+
+    <!-- Free Audit Entry Point -->
+    <div style="margin-top:44px;margin-bottom:16px;background:var(--n2);border:1px solid var(--green-b);border-radius:4px;padding:24px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+      <div>
+        <span class="pill pill-green" style="margin-bottom:8px">Start Here · Free</span>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:6px">Free 3PL Audit</h3>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.65;max-width:440px">We run your latest 3PL invoice through our audit engine — flagging every overcharge, rate discrepancy, and unapproved fee. <strong style="color:var(--off)">Most brands discover 3–8% in overcharges they didn't know existed.</strong></p>
+      </div>
+      <a href="https://3pl-audit-tool.vercel.app" class="btn-p" style="white-space:nowrap" target="_blank">Get Free Audit →</a>
+    </div>
+
+    <!-- Two Service Lines -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <button class="card" style="border-color:var(--green-b);background:var(--n2)" onclick="showTab('ops',document.querySelectorAll('.tab-btn')[1])">
+        <div class="card-num">Fractional Ops · Service Line 1</div>
+        <h2>3PL<br>Oversight</h2>
+        <p>Ongoing monthly invoice auditing, rate benchmarking, approval workflows, dispute recovery, and vendor negotiation. When we spot a better 3PL fit, we run the full evaluation and switch. <strong>Your 3PL finally has someone watching every bill they send you.</strong></p>
+        <span class="card-price">$1,999/year · $199/mo</span>
+        <span class="card-cta">Explore <span class="card-arrow">→</span></span>
+      </button>
+      <button class="card featured" onclick="showTab('ops',document.querySelectorAll('.tab-btn')[1])">
+        <div class="card-num">Fractional Ops · Service Line 2</div>
+        <h2>Inbound<br>Logistics</h2>
+        <p>Freight booking, mode selection, customs clearance, IOR coordination, cargo insurance, documentation — every shipment cycle managed end-to-end. <strong>For brands sourcing internationally, this is the expertise gap that costs you the most.</strong></p>
+        <span class="card-price">$3,999/year · $399/mo</span>
+        <span class="card-cta">Explore <span class="card-arrow">→</span></span>
+      </button>
+    </div>
+    <div style="margin-top:16px;background:var(--n1);border:1px solid var(--green-b);border-radius:4px;padding:16px 24px;text-align:center">
+      <p style="font-size:.84rem;color:var(--off)">Both service lines together: <strong style="color:var(--white);font-family:'Playfair Display',serif;font-size:1.05rem">$4,999/year</strong> <span style="color:var(--muted);font-size:.78rem">— save $999</span></p>
+    </div>
+  </div>
+
+  <div class="bg-alt">
+    <div class="sec-wrap reveal">
+      <div class="cta-inner">
+        <div>
+          <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:900;color:var(--white);line-height:1.2;margin-bottom:12px">Someone in your corner<br>who knows the trade<br><em style="color:var(--green-l);font-style:italic">as well as your vendors do.</em></h2>
+          <p style="font-size:.86rem;color:var(--muted);max-width:480px;line-height:1.72">3PLs, freight forwarders, and customs brokers have decades of experience with brands who don't know what to ask. Book a free 30-minute call — tell us your current setup and we'll show you exactly where you're exposed.</p>
+        </div>
+        <div class="cta-right">
+          <a href="https://calendly.com/hi-storefarer/30min" class="btn-p" style="white-space:nowrap">Book Free Strategy Call →</a>
+          <p class="cta-note">30 minutes · No commitment<br>We map the right product for your brand</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-home -->
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     TAB: OPERATIONS
+════════════════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-ops">
+
+  <div class="page-hero">
+    <p class="eyebrow">For US Ecommerce Brands · Freight · Customs · 3PL · Fulfilment</p>
+    <h1 class="ph1">Your logistics function.<br><em>Without the logistics team.</em></h1>
+    <p class="ph-sub">Start with a free 3PL audit that shows exactly where your money is leaking. Then engage the full managed logistics service when you see what expertise recovers. All backed by a team with decades of supply chain and ecommerce logistics experience.</p>
+    <div class="hero-actions">
+      <a href="https://calendly.com/hi-storefarer/30min" class="btn-p">Book a Free Strategy Call →</a>
+      <button class="btn-s" onclick="showTab('pricing',document.querySelectorAll('.tab-btn')[3])">View Pricing</button>
+    </div>
+  </div>
+
+  <hr class="full-rule">
+
+  <div class="sec-wrap reveal">
+    <div class="offer-stack">
+
+      <!-- FRACTIONAL OPS UMBRELLA -->
+      <div style="border:1px solid var(--green-b);border-radius:4px;padding:32px 36px;background:var(--n2);margin-bottom:8px">
+        <p style="font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green-l);margin-bottom:10px">Your Outsourced Logistics Function</p>
+        <p style="font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:700;color:var(--white);line-height:1.3;margin-bottom:12px">Fractional Ops</p>
+        <p style="font-size:.86rem;color:var(--muted);line-height:1.72;max-width:680px">Logistics costs 25–30% of your selling price. Without expertise, it costs more. Fractional Ops gives you the logistics team you need — without the logistics team. Choose the service lines your brand needs, or bundle both for the best value.</p>
+      </div>
+
+      <!-- SERVICE LINE 1: 3PL OVERSIGHT -->
+      <div class="offer">
+        <div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap">
+          <span class="pill pill-green">Entry Point</span>
+          <span class="pill pill-muted">Every US Ecommerce Brand with a 3PL</span>
+        </div>
+        <div class="offer-head">
+          <div>
+            <p style="font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Service Line 01 · 3PL Oversight</p>
+            <div class="offer-title">3PL Oversight</div>
+          </div>
+          <div class="offer-price-block">
+            <div class="offer-price">$1,999<span style="font-size:.9rem;font-weight:400;font-family:'IBM Plex Sans',sans-serif;color:var(--muted)">/year</span></div>
+            <div class="offer-price-note">$199/month equivalent</div>
+          </div>
+        </div>
+        <p class="offer-desc">Your 3PL sends you invoices every month. You pay them. But who checks whether those charges are accurate, approved, or competitive? We do — every month. When we find overcharges, we recover them. When we spot a better 3PL fit, we run the full evaluation and manage the switch. <strong>Most brands discover 3–8% in overcharges they never knew existed. The ongoing oversight ensures it never compounds again.</strong></p>
+        <ul class="offer-feats">
+          <li><span class="ck">✓</span>Monthly 3PL invoice auditing & line-item reconciliation</li>
+          <li><span class="ck">✓</span>Approval workflow gateway for non-standard 3PL charges</li>
+          <li><span class="ck">✓</span>Rate benchmarking against industry averages</li>
+          <li><span class="ck">✓</span>Billing dispute management & overcharge recovery</li>
+          <li><span class="ck">✓</span>3PL performance scorecard & monthly reporting</li>
+          <li><span class="ck">✓</span>3PL selection advisory — full RFP when a switch makes sense</li>
+          <li><span class="ck">✓</span>Contract review & vendor negotiation</li>
+          <li><span class="ck">✓</span>Cost forecasting from sales data</li>
+        </ul>
+        <div class="offer-cta">
+          <a href="https://3pl-audit-tool.vercel.app" class="btn-p" target="_blank">Start with a Free Audit →</a>
+          <button class="btn-s" onclick="showTab('pricing',document.querySelectorAll('.tab-btn')[3])">View Pricing</button>
+        </div>
+      </div>
+
+      <!-- SERVICE LINE 2: INBOUND LOGISTICS -->
+      <div class="offer">
+        <div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap">
+          <span class="pill pill-amber">Managed Service</span>
+          <span class="pill pill-muted">For Brands Sourcing Internationally</span>
+        </div>
+        <div class="offer-head">
+          <div>
+            <p style="font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Service Line 02 · Inbound Logistics</p>
+            <div class="offer-title">Inbound Logistics</div>
+          </div>
+          <div class="offer-price-block">
+            <div class="offer-price">$3,999<span style="font-size:.9rem;font-weight:400;font-family:'IBM Plex Sans',sans-serif;color:var(--muted)">/year</span></div>
+            <div class="offer-price-note">$399/month equivalent</div>
+          </div>
+        </div>
+        <p class="offer-desc">When your supplier says goods are ready, someone needs to book freight, choose the right mode, handle customs, coordinate with your IOR, arrange insurance, and get the shipment into your 3PL or Amazon — with the right documentation, on time. That someone is our team. <strong>Every shipment cycle managed end-to-end, backed by decades of supply chain and ecommerce logistics experience.</strong></p>
+        <ul class="offer-feats">
+          <li><span class="ck">✓</span>Freight strategy (air vs sea, FCL vs LCL, Incoterms)</li>
+          <li><span class="ck">✓</span>Carrier selection & rate negotiation</li>
+          <li><span class="ck">✓</span>Supplier coordination & production follow-up</li>
+          <li><span class="ck">✓</span>Customs documentation, ISF filing & HS classification</li>
+          <li><span class="ck">✓</span>IOR setup & customs bond coordination</li>
+          <li><span class="ck">✓</span>Cargo insurance & claims management</li>
+          <li><span class="ck">✓</span>Amazon send-shipment plans & Global Logistics</li>
+          <li><span class="ck">✓</span>Trade compliance & tariff advisory</li>
+        </ul>
+        <div class="offer-cta">
+          <a href="https://calendly.com/hi-storefarer/30min" class="btn-p">Book a Strategy Call →</a>
+          <button class="btn-s" onclick="showTab('pricing',document.querySelectorAll('.tab-btn')[3])">View Pricing</button>
+        </div>
+      </div>
+
+      <!-- BUNDLE BANNER -->
+      <div style="border:1px solid var(--green-b);border-radius:4px;padding:24px 32px;background:var(--n2);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+        <div>
+          <p style="font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green-l);margin-bottom:6px">Best Value · Both Service Lines</p>
+          <p style="font-size:.86rem;color:var(--off);line-height:1.6">3PL Oversight + Inbound Logistics bundled together. One team, one account manager, complete coverage.</p>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <p style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--white)">$4,999<span style="font-size:.8rem;font-weight:400;font-family:'IBM Plex Sans',sans-serif;color:var(--muted)">/year</span></p>
+          <p style="font-size:.72rem;color:var(--green-l)">Save $999 vs separate</p>
+        </div>
+      </div>
+
+      <!-- SCOPE STRIP -->
+      <div style="border:1px solid var(--rule);border-radius:4px;padding:32px 36px;background:var(--n1)">
+        <p style="font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green-l);margin-bottom:14px">End-to-End Coverage · When Both Service Lines Are Combined</p>
+        <p style="font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2vw,1.45rem);font-weight:700;color:var(--white);line-height:1.35;margin-bottom:14px">From the moment your supplier says goods are ready to the moment your customer's order ships — every logistics decision and every vendor relationship is handled by our team.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin-top:20px">
+          <div style="padding:20px 22px;border-right:1px solid var(--rule)">
+            <p style="font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:8px">Pre-Shipment</p>
+            <p style="font-size:.78rem;color:var(--muted);line-height:1.65">Freight mode decisions · Incoterms · carrier selection · rate negotiation · cargo insurance · Amazon send-shipment plans · documentation</p>
+          </div>
+          <div style="padding:20px 22px;border-right:1px solid var(--rule)">
+            <p style="font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:8px">Customs & Clearance</p>
+            <p style="font-size:.78rem;color:var(--muted);line-height:1.65">IOR setup · customs bond · ISF filing · HS classification · tariff advisory · broker coordination · duty payment · trade compliance</p>
+          </div>
+          <div style="padding:20px 22px">
+            <p style="font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:8px">3PL & Ongoing</p>
+            <p style="font-size:.78rem;color:var(--muted);line-height:1.65">3PL selection (full RFP) · contract review · invoice auditing · approval workflows · dispute recovery · cargo claims · monthly reporting</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3PL CONTROL TOWER — LEAD MAGNET / ENTRY POINT -->
+      <div class="offer tool-offer">
+        <div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap">
+          <span class="pill pill-green">Start Here · Free</span>
+          <span class="pill pill-muted">Your Entry Point</span>
+        </div>
+        <div class="offer-head">
+          <div>
+            <p style="font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Step 01 · See the Value First</p>
+            <div class="offer-title">3PL Control Tower</div>
+          </div>
+          <div class="offer-price-block">
+            <div class="offer-price">Free<span style="font-size:.9rem;font-weight:400;font-family:'IBM Plex Sans',sans-serif;color:var(--muted)"> first audit</span></div>
+            <div class="offer-price-note">No credit card · No commitment · Entry point for 3PL Oversight</div>
+          </div>
+        </div>
+        <p class="offer-desc">3PLs have been doing this for decades. They know most brands accept invoices without question. Unapproved work billed on time. Rate drift that compounds silently. Ad hoc charges with no traceable authorisation. The 3PL Control Tower audits every invoice, creates an approval gateway for all non-standard work, and gives you the paper trail you need in any dispute. <strong>Start with a free first audit. Most brands discover 3–8% in overcharges they never knew existed. This is the technology that powers the 3PL Oversight service line.</strong></p>
+        <div class="tool-features" style="margin-top:0;margin-bottom:28px">
+          <div class="tf">
+            <div class="tf-num">Function 01</div>
+            <h3>Automated Invoice Audit</h3>
+            <p>Ingests your 3PL invoices and cross-references every line item against your contracted rates and order volume. Flags discrepancies in plain English with the dollar value of each error.</p>
+          </div>
+          <div class="tf">
+            <div class="tf-num">Function 02</div>
+            <h3>Approval Workflow Gateway</h3>
+            <p>Any non-standard 3PL work creates a digital approval request before billing begins. Eliminates surprise ad-hoc charges and creates an immutable audit trail.</p>
+          </div>
+          <div class="tf">
+            <div class="tf-num">Function 03</div>
+            <h3>Benchmarking & Analytics</h3>
+            <p>Shows your cost per unit, per pick, per storage pallet against anonymised industry averages. Identify cost creep before it compounds. Forecast next month's costs from sales projections.</p>
+          </div>
+        </div>
+        <div class="offer-cta">
+          <a href="https://3pl-audit-tool.vercel.app" class="btn-p" style="background:var(--green)" target="_blank">Get Your Free First Audit →</a>
+          <p style="font-size:.74rem;color:var(--muted)">If we find nothing, you've lost nothing. If we do — you'll see exactly why 3PL Oversight pays for itself.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="bg-alt">
+    <div class="sec-wrap reveal">
+      <div class="cta-inner">
+        <div>
+          <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:900;color:var(--white);line-height:1.2;margin-bottom:12px">Start with the free audit.<br><em style="color:var(--green-l);font-style:italic">See the value before committing.</em></h2>
+          <p style="font-size:.86rem;color:var(--muted);max-width:480px;line-height:1.72">Send us your latest 3PL invoice. We'll audit every line item and show you exactly where your money is leaking. No cost, no commitment — and if we find nothing, you've lost nothing.</p>
+        </div>
+        <div class="cta-right">
+          <a href="https://calendly.com/hi-storefarer/30min" class="btn-p" style="white-space:nowrap">Book Free Strategy Call →</a>
+          <p class="cta-note">30 minutes · No commitment</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-ops -->
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     TAB: HOW IT WORKS
+════════════════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-how">
+
+  <div class="page-hero">
+    <p class="eyebrow">The Storefarer Model</p>
+    <h1 class="ph1">Tech does the work.<br>Experts handle the judgment.<br><em>You run the brand.</em></h1>
+    <p class="ph-sub">Storefarer is not a freight forwarder or a services company with a website. It is a technology platform with an expert logistics team behind it. The platform handles everything that can be automated. The team handles everything that requires ecommerce logistics experience and judgment. You get the output of both — without managing either.</p>
+  </div>
+
+  <hr class="full-rule">
+
+  <div class="sec-wrap reveal">
+    <p class="sec-label">The Two Layers</p>
+    <h2 class="sec-title">What the platform does.<br><em>What the team does.</em></h2>
+    <p class="sec-sub">Every logistics function Storefarer covers has two components — the repetitive, data-intensive work that technology handles automatically, and the strategic decisions that require decades of ecommerce logistics experience. Both layers are included in every engagement.</p>
+    <div class="layer-grid">
+      <div class="layer">
+        <div class="layer-icon">⚙️</div>
+        <h3>The Technology Layer</h3>
+        <p style="font-size:.8rem;color:var(--muted);line-height:1.7;margin-bottom:16px">Handles the clerical, repetitive, and data-intensive work automatically — no human intervention required.</p>
+        <ul>
+          <li>Automated 3PL invoice ingestion and line-item reconciliation</li>
+          <li>Anomaly detection — flags billing discrepancies before they compound</li>
+          <li>Approval workflow gateway for 3PL non-standard work</li>
+          <li>Cost benchmarking against anonymised industry averages</li>
+          <li>Automated monthly reporting and cost tracking</li>
+          <li>Shipment documentation generation and tracking</li>
+        </ul>
+      </div>
+      <div class="layer" style="background:var(--n2);border-color:var(--green-b)">
+        <div class="layer-icon">🧠</div>
+        <h3>The Expert Team Layer</h3>
+        <p style="font-size:.8rem;color:var(--muted);line-height:1.7;margin-bottom:16px">India-based team with decades of ecommerce logistics and compliance experience. Handles everything that requires judgment.</p>
+        <ul>
+          <li>Freight mode decisions — air vs sea, FCL vs LCL, Incoterms</li>
+          <li>3PL selection matched to your fulfilment model</li>
+          <li>Customs classification and compliance advisory</li>
+          <li>Dispute management and vendor negotiation</li>
+          <li>Vendor and carrier rate negotiation</li>
+          <li>Strategic account management and monthly reviews</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-alt">
+    <div class="sec-wrap reveal">
+      <p class="sec-label">The Customer Journey</p>
+      <h2 class="sec-title">Free audit → 3PL Oversight →<br><em>add Inbound Logistics when you need it.</em></h2>
+      <p class="sec-sub">Every engagement starts the same way: a free 3PL audit that shows you where money is leaking. From there, you choose the Fractional Ops service lines your brand needs.</p>
+      <div class="step-grid">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Get a free 3PL audit</h3>
+          <p>Send us your latest 3PL invoice. We audit it against contracted rates and flag every discrepancy. No cost. No commitment.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>See the value immediately</h3>
+          <p>Most brands discover 3–8% in overcharges they didn't know about. The "aha moment" is usually in the first report.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Subscribe to 3PL Oversight</h3>
+          <p>Ongoing monthly auditing, rate benchmarking, dispute recovery, and 3PL switch advisory — $1,999/year. Your 3PL never goes unchecked again.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>Add Inbound Logistics</h3>
+          <p>When you source internationally, add freight, customs, IOR, and documentation management — $3,999/year. Or bundle both for $4,999/year.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="full-rule">
+
+  <div class="sec-wrap reveal">
+    <p class="sec-label">The India GCC Model</p>
+    <div class="gcc-layout">
+      <div>
+        <h2 class="sec-title" style="font-size:clamp(1.5rem,2.5vw,2.1rem)">How we deliver world-class expertise<br><em>at a fraction of the cost.</em></h2>
+        <p style="font-size:.86rem;color:var(--muted);line-height:1.82;margin-top:16px">India hosts over 1,700 Global Capability Centers — the operational delivery arms of the world's largest companies. Goldman Sachs, McKinsey, every major US bank runs high-expertise functions from India: world-class output at a fraction of Western labour costs.</p>
+        <p style="font-size:.86rem;color:var(--muted);line-height:1.82;margin-top:14px">Storefarer is that model built for growing brands. <strong style="color:var(--off)">US-incorporated. India-delivered.</strong> Your contracts and legal accountability sit with a US C-Corp. Your logistics team sits in India — the same talent market the Fortune 500 relies on.</p>
+        <p style="font-size:.86rem;color:var(--muted);line-height:1.82;margin-top:14px">Our founding team brings decades of ecommerce logistics, compliance, and supply chain experience — the depth you find in large brand logistics teams, available to growing brands at a founder-stage price point.</p>
+      </div>
+      <div>
+        <div class="gcc-stats">
+          <div class="gcc-stat" style="border-right:1px solid var(--rule)">
+            <div class="gcc-stat-val">1,700+</div>
+            <div class="gcc-stat-lbl">Global Capability Centers in India</div>
+          </div>
+          <div class="gcc-stat" style="border-right:1px solid var(--rule)">
+            <div class="gcc-stat-val">1.9M</div>
+            <div class="gcc-stat-lbl">Professionals in India's GCC sector</div>
+          </div>
+          <div class="gcc-stat">
+            <div class="gcc-stat-val">$64.6B</div>
+            <div class="gcc-stat-lbl">Annual GCC ecosystem revenue</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;padding:20px 22px;background:var(--navy);border:1px solid var(--green-b);border-radius:4px">
+          <p style="font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green-l);margin-bottom:10px">The Storefarer Structure</p>
+          <p style="font-size:.82rem;color:var(--off);line-height:1.7;margin-bottom:10px"><strong>US C-Corp</strong> — client contracts, invoicing, legal accountability. Your vendor relationship is fully US-domiciled.</p>
+          <p style="font-size:.82rem;color:var(--off);line-height:1.7"><strong>India subsidiary (100% owned)</strong> — platform development, logistics operations delivery, expert team. The GCC model that makes the cost structure possible.</p>
+        </div>
+        <div class="cost-compare">
+          <div class="cc-item">
+            <div style="font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Equivalent US local team</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--red)">$350K–$500K</div>
+            <div style="font-size:.68rem;color:var(--muted);margin-top:3px">per year · six specialists</div>
+          </div>
+          <div class="cc-item" style="border-left:1px solid var(--rule)">
+            <div style="font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">With Storefarer</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--green-l)">From $600</div>
+            <div style="font-size:.68rem;color:var(--muted);margin-top:3px">per month · full logistics function</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-how -->
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     TAB: PRICING
+════════════════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-pricing">
+
+  <div class="page-hero">
+    <p class="eyebrow">Pricing · Transparent · Priced for Your Stage</p>
+    <h1 class="ph1">Start with a free audit.<br>Scale when<br><em>it makes sense.</em></h1>
+    <p class="ph-sub">Your first 3PL audit is free — no credit card, no commitment. If we find overcharges, you'll see the value before spending a penny. Managed logistics services are on annual plans priced for founder-led brands. Still 90%+ cheaper than a local logistics hire.</p>
+  </div>
+
+  <hr class="full-rule">
+
+  <div class="sec-wrap reveal">
+
+    <!-- FREE FIRST AUDIT -->
+    <div style="background:var(--n2);border:1px solid var(--green-b);border-radius:4px;padding:28px 32px;margin-bottom:40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+      <div>
+        <span class="pill pill-green" style="margin-bottom:8px">Start Here · Free</span>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:8px">Get your free 3PL audit</h3>
+        <p style="font-size:.84rem;color:var(--muted);line-height:1.7;max-width:440px">Upload your latest 3PL invoice. We audit every line item against your contracted rates and flag discrepancies — in plain English, with dollar values. If we find nothing, you've lost nothing.</p>
+      </div>
+      <a href="https://3pl-audit-tool.vercel.app" class="btn-p" style="white-space:nowrap" target="_blank">Get Free Audit →</a>
+    </div>
+
+    <!-- PRODUCTS -->
+    <p class="sec-label">Fractional Ops · Pricing</p>
+    <h2 class="sec-title" style="margin-bottom:12px">Two service lines. One team.<br><em>Choose what your brand needs.</em></h2>
+    <p style="font-size:.86rem;color:var(--muted);line-height:1.72;margin-bottom:8px">Start with a free 3PL audit. Then subscribe to the service lines you need — or bundle both for the best value.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+
+      <!-- 3PL OVERSIGHT -->
+      <div class="prod" style="border-color:var(--green-b);background:var(--n2)">
+        <span class="prod-badge" style="background:var(--green)">Entry Point</span>
+        <div class="prod-eye">Service Line 01</div>
+        <h2>3PL<br>Oversight</h2>
+        <p class="prod-desc">Monthly invoice auditing, rate benchmarking, approval workflows, dispute recovery, and 3PL switch advisory. Your 3PL finally has someone watching every bill.</p>
+        <div class="prod-price"><span class="prod-price-val">$1,999</span><span class="prod-price-note">/ year</span></div>
+        <p class="prod-setup">$199/month equivalent · No setup fee</p>
+        <ul class="prod-feats">
+          <li><span class="ck">✓</span>Monthly 3PL invoice auditing</li>
+          <li><span class="ck">✓</span>Line-item reconciliation</li>
+          <li><span class="ck">✓</span>Approval workflow gateway</li>
+          <li><span class="ck">✓</span>Rate benchmarking & analytics</li>
+          <li><span class="ck">✓</span>Billing dispute recovery</li>
+          <li><span class="ck">✓</span>3PL selection advisory & RFP</li>
+          <li><span class="ck">✓</span>Contract review & negotiation</li>
+          <li><span class="ck">✓</span>Monthly reporting & scorecard</li>
+        </ul>
+        <p style="font-size:.72rem;color:var(--green-l);margin-bottom:14px;font-weight:600">Free first audit included →</p>
+        <a href="https://3pl-audit-tool.vercel.app" class="prod-link" target="_blank">Start with Free Audit →</a>
+      </div>
+
+      <!-- INBOUND LOGISTICS -->
+      <div class="prod">
+        <span class="prod-badge" style="background:var(--amber)">Add When You Import</span>
+        <div class="prod-eye">Service Line 02</div>
+        <h2>Inbound<br>Logistics</h2>
+        <p class="prod-desc">Every shipment cycle managed end-to-end — freight, customs, IOR, insurance, documentation. For brands sourcing products internationally.</p>
+        <div class="prod-price"><span class="prod-price-val">$3,999</span><span class="prod-price-note">/ year</span></div>
+        <p class="prod-setup">$399/month equivalent · No setup fee</p>
+        <ul class="prod-feats">
+          <li><span class="ck">✓</span>Freight strategy & mode selection</li>
+          <li><span class="ck">✓</span>Carrier selection & rate negotiation</li>
+          <li><span class="ck">✓</span>Supplier coordination & follow-up</li>
+          <li><span class="ck">✓</span>Customs documentation & ISF</li>
+          <li><span class="ck">✓</span>IOR setup & customs bond</li>
+          <li><span class="ck">✓</span>Cargo insurance & claims</li>
+          <li><span class="ck">✓</span>Amazon shipment plans & logistics</li>
+          <li><span class="ck">✓</span>Trade compliance & tariff advisory</li>
+        </ul>
+        <a href="https://calendly.com/hi-storefarer/30min" class="prod-link">Book a Strategy Call →</a>
+      </div>
+
+      <!-- BUNDLE -->
+      <div class="prod featured">
+        <span class="prod-badge">Best Value</span>
+        <div class="prod-eye">Both Service Lines · Save $999</div>
+        <h2>Full<br>Bundle</h2>
+        <p class="prod-desc">3PL Oversight + Inbound Logistics. One team, one account manager, complete logistics coverage. Everything under the Fractional Ops umbrella.</p>
+        <div class="prod-price"><span class="prod-price-val">$4,999</span><span class="prod-price-note">/ year</span></div>
+        <p class="prod-setup">$449/month equivalent · Save $999 vs separate</p>
+        <ul class="prod-feats">
+          <li><span class="ck">✓</span>Everything in 3PL Oversight</li>
+          <li><span class="ck">✓</span>Everything in Inbound Logistics</li>
+          <li><span class="ck">✓</span>Dedicated account manager</li>
+          <li><span class="ck">✓</span>Unified monthly reporting</li>
+          <li><span class="ck">✓</span>Priority response times</li>
+          <li><span class="ck">✓</span>One relationship, complete coverage</li>
+        </ul>
+        <a href="https://calendly.com/hi-storefarer/30min" class="prod-link">Book a Strategy Call →</a>
+      </div>
+    </div>
+
+    <!-- Scale banner -->
+    <div style="margin-top:16px;background:var(--n1);border:1px solid var(--rule);border-radius:4px;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+      <div>
+        <p style="font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:4px">Fractional Ops · Scale</p>
+        <p style="font-size:.78rem;color:var(--off);line-height:1.6">High-frequency brands or complex logistics needs. Custom scope and pricing.</p>
+      </div>
+      <a href="https://calendly.com/hi-storefarer/30min" style="font-size:.7rem;font-weight:600;letter-spacing:.08em;color:var(--green-l);text-decoration:none;flex-shrink:0;white-space:nowrap">Enquire →</a>
+    </div>
+  </div>
+
+  <div class="bg-alt">
+    <div class="sec-wrap reveal">
+      <p class="sec-label">Frequently Asked Questions</p>
+      <h2 class="sec-title" style="margin-bottom:36px">Common questions<br>about <em>pricing & scope.</em></h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span>How does the free first audit work?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Book a call or send us your latest 3PL invoice. We run it through the 3PL Control Tower — auditing every line item against your contracted rates and order volume, and deliver a plain-English report showing every discrepancy with dollar values. <strong>If we find nothing, you've lost nothing</strong> — there is no obligation to proceed. If we find overcharges, you'll see exactly why the full Fractional Ops service pays for itself.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span>What's the difference between the two service lines?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner"><strong>3PL Oversight</strong> ($1,999/year) covers your ongoing 3PL relationship — monthly invoice auditing, rate benchmarking, approval workflows, dispute recovery, and 3PL switch advisory. Any US ecommerce brand with a 3PL benefits from this. <strong>Inbound Logistics</strong> ($3,999/year) covers your import shipments — freight, customs, IOR, insurance, documentation. This applies when your brand sources products internationally. Bundle both for $4,999/year.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span>Do I need both service lines?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Not necessarily. If you source domestically and only need someone watching your 3PL, <strong>3PL Oversight alone</strong> is a complete service. If you import from overseas, adding Inbound Logistics gives you end-to-end coverage. Many brands start with 3PL Oversight and add Inbound Logistics later when they need it.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span>Is there a minimum contract term?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Annual plans are paid upfront for 12 months. There is no long-term lock-in — the service retains clients because it delivers measurable savings, not because of contract terms.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span>Are there additional costs beyond the subscription?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Beyond the annual subscription, pass-through costs — 3PL fees, freight charges, duties, and taxes — are paid by you directly. We negotiate and manage these but do not mark them up.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span>What kind of brands is this for?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Fractional Ops is built for founder-led ecommerce brands selling physical products in the US. If you are managing logistics yourself — freight bookings, 3PL relationships, customs docs, vendor invoices — and don't have a logistics team, this is designed for you.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span>How quickly does the service pay for itself?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">For most brands, the savings from 3PL invoice recovery alone exceed the $1,999 annual cost of 3PL Oversight — often within the first few months. Add freight optimisation and better vendor rates with Inbound Logistics, and the full bundle typically pays for itself within the first year. The free audit gives you a preview of the savings potential before you commit.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-pricing -->
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     TAB: WHY US
+════════════════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-why">
+
+  <div class="page-hero">
+    <p class="eyebrow">Our Story · The Model · The Team</p>
+    <h1 class="ph1">Built from experience.<br>Delivered through technology.<br><em>Priced for founders.</em></h1>
+    <p class="ph-sub">Storefarer exists because we have lived the logistics problem from both sides — building brands and watching founders drown in freight, customs, and compliance work that should never have been on their plate. We built the platform we wish had existed.</p>
+    <div class="hero-actions">
+      <a href="https://calendly.com/hi-storefarer/30min" class="btn-p">Book a Strategy Call →</a>
+      <button class="btn-s" onclick="showTab('how',document.querySelectorAll('.tab-btn')[2])">How It Works</button>
+    </div>
+  </div>
+
+  <hr class="full-rule">
+
+  <div class="bg-alt">
+    <div class="sec-wrap reveal">
+      <p class="sec-label">Why We Built This</p>
+      <h2 class="sec-title">The brand that showed us<br><em>the gap.</em></h2>
+      <div class="story-grid">
+        <div class="story-body">
+          <p>Five years ago, we started working with a brand built by two founders. One with a background in design — the other in marketing. They were 22 and 26. They had designed a great product, set up a Shopify store, and started selling locally. They knew their customer. They knew how to tell the story.</p>
+          <p>What they didn't have was anyone to handle the logistics underneath the brand. Freight bookings fell to the founder who knew design. Customs paperwork fell to the founder who knew marketing. Every restock cycle was improvised — and every decision was a guess. Wrong freight mode. Wrong 3PL. 3PL invoices paid without question.</p>
+          <p><strong>Then they wanted to sell in the US.</strong></p>
+          <p>Suddenly the complexity multiplied. Company formation in the US. EIN registration. International freight decisions. Incoterms. Customs classification. 3PL selection for a fulfilment model they were still figuring out.</p>
+          <p>None of this was in their skillset. The work was too intermittent to justify a full hire, too complex to hand to a generalist freelancer. They relied on us to fill the gap — and in doing so, we restructured their freight model, switched their 3PL, and recovered overcharges they hadn't known existed.</p>
+          <p>That brand is now selling in the US. <strong>Every founder-led brand we have worked with since has had the same logistics gap — and the same money leaking through it.</strong></p>
+        </div>
+        <div>
+          <div style="background:var(--n2);border:1px solid var(--green-b);border-radius:4px;padding:32px 28px;margin-bottom:16px">
+            <p style="font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green-l);margin-bottom:14px">The Pattern</p>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;gap:12px;align-items:flex-start">
+                <span style="color:var(--green-l);font-weight:700;flex-shrink:0">✓</span>
+                <p style="font-size:.82rem;color:var(--off);line-height:1.6">Strong product intuition and market understanding</p>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start">
+                <span style="color:var(--green-l);font-weight:700;flex-shrink:0">✓</span>
+                <p style="font-size:.82rem;color:var(--off);line-height:1.6">Marketing and brand-building capability</p>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start">
+                <span style="color:var(--red);font-weight:700;flex-shrink:0">✗</span>
+                <p style="font-size:.82rem;color:var(--off);line-height:1.6">No logistics or supply chain expertise — and no one to ask</p>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start">
+                <span style="color:var(--red);font-weight:700;flex-shrink:0">✗</span>
+                <p style="font-size:.82rem;color:var(--off);line-height:1.6">Can't afford functional hires at current scale</p>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start">
+                <span style="color:var(--red);font-weight:700;flex-shrink:0">✗</span>
+                <p style="font-size:.82rem;color:var(--off);line-height:1.6">Freelancers cover one lane — nobody owns the whole</p>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start">
+                <span style="color:var(--red);font-weight:700;flex-shrink:0">✗</span>
+                <p style="font-size:.82rem;color:var(--off);line-height:1.6">Doesn't want to manage people — wants to build</p>
+              </div>
+            </div>
+          </div>
+          <div style="background:var(--navy);border:1px solid var(--rule);border-radius:4px;padding:22px 24px">
+            <p style="font-size:.78rem;color:var(--muted);line-height:1.72;font-style:italic">"The expertise gap is always in logistics — never in product, never in marketing."</p>
+            <p style="font-size:.68rem;color:var(--green-l);margin-top:10px;letter-spacing:.06em">— The Storefarer founding team</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="full-rule">
+
+  <div class="sec-wrap reveal">
+    <p class="sec-label">Why Not the Alternatives</p>
+    <h2 class="sec-title">Not a hire. Not a freelancer.<br><em>Not an agency.</em></h2>
+    <p class="sec-sub">Every alternative leaves a founder-led brand exposed — either to the cost of inexperience, or to vendors who have been structuring contracts against brands like yours for decades.</p>
+    <div class="compare-grid">
+      <div class="cmp">
+        <p class="cmp-head" style="color:var(--red)">The alternatives</p>
+        <ul>
+          <li><span style="color:var(--red);flex-shrink:0">✗</span><p><strong style="color:var(--off)">Hiring locally</strong> — $60K–$100K per specialist, before benefits. You need several. The work is intermittent so half the salary is wasted.</p></li>
+          <li><span style="color:var(--red);flex-shrink:0">✗</span><p><strong style="color:var(--off)">Freelancers</strong> — cover one lane. Your customs broker doesn't know your 3PL. Your freight forwarder doesn't audit your invoices. Nobody owns the whole.</p></li>
+          <li><span style="color:var(--red);flex-shrink:0">✗</span><p><strong style="color:var(--off)">Agencies</strong> — category-specific and expensive. Designed for enterprise budgets, not founder-stage brands.</p></li>
+          <li><span style="color:var(--red);flex-shrink:0">✗</span><p><strong style="color:var(--off)">Doing it yourself</strong> — 20–30% of founder time on operational work. Wrong decisions on freight mode, 3PL selection, and compliance compound over months.</p></li>
+        </ul>
+      </div>
+      <div class="cmp" style="border-left:1px solid var(--rule)">
+        <p class="cmp-head" style="color:var(--green-l)">With Storefarer</p>
+        <ul>
+          <li><span style="color:var(--green-l);flex-shrink:0">✓</span><p>3PL Oversight from $199/month, full logistics from $449/month — backed by decades of ecommerce logistics expertise, no benefits, no management overhead</p></li>
+          <li><span style="color:var(--green-l);flex-shrink:0">✓</span><p>One account manager owns your entire logistics chain — no handoffs between vendors, no gaps, no founder coordination</p></li>
+          <li><span style="color:var(--green-l);flex-shrink:0">✓</span><p>Technology handles the repetitive work — reconciliation, reporting, anomaly detection — team focuses on judgment</p></li>
+          <li><span style="color:var(--green-l);flex-shrink:0">✓</span><p>Scales with your shipment volume — activates when you need it, not a fixed headcount sitting idle</p></li>
+          <li><span style="color:var(--green-l);flex-shrink:0">✓</span><p>Someone who knows the trade as well as your 3PL does — in your corner during disputes, contract negotiations, and every decision that's expensive to reverse</p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-why -->
+
+
+<footer>
+  <div class="foot-logo">Store<span>farer</span></div>
+  <div class="foot-links">
+    <button onclick="showTab('home',null)">Home</button>
+    <span class="foot-sep">·</span>
+    <button onclick="showTab('ops',document.querySelectorAll('.tab-btn')[1])">Services</button>
+    <span class="foot-sep">·</span>
+    <button onclick="showTab('how',document.querySelectorAll('.tab-btn')[2])">How It Works</button>
+    <span class="foot-sep">·</span>
+    <button onclick="showTab('pricing',document.querySelectorAll('.tab-btn')[3])">Pricing</button>
+    <span class="foot-sep">·</span>
+    <button onclick="showTab('why',document.querySelectorAll('.tab-btn')[4])">Why Us</button>
+  </div>
+  <div class="foot-right">
+    <a href="https://calendly.com/hi-storefarer/30min" class="foot-email">Book a Free Call</a>
+    &nbsp;·&nbsp;
+    <a href="mailto:hi@storefarer.com" class="foot-email">hi@storefarer.com</a>
+  </div>
+</footer>
+
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  if (btn && btn.classList && btn.classList.contains('tab-btn')) btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(() => {
+    document.querySelectorAll('#tab-' + id + ' .reveal').forEach(el => {
+      el.classList.remove('in');
+      void el.offsetWidth;
+      el.classList.add('in');
+    });
+  }, 100);
+}
+
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const icon = btn.querySelector('.faq-icon');
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-icon').forEach(i => { i.textContent = '+'; i.style.transform = 'none'; });
+  if (!isOpen) {
+    answer.classList.add('open');
+    icon.textContent = '×';
+    icon.style.transform = 'rotate(0deg)';
+  }
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+setTimeout(() => {
+  document.querySelectorAll('#tab-home .reveal').forEach(el => el.classList.add('in'));
+}, 200);
+</script>
+</body>
+</html>
